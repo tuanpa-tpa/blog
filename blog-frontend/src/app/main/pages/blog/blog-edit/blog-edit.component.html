@@ -1,0 +1,147 @@
+<div class="content-wrapper container-xxl p-0">
+  <div class="content-body">
+    <!-- content-header component -->
+    <app-content-header [contentHeader]="contentHeader"></app-content-header>
+
+    <!-- Blog Edit -->
+    <div class="blog-edit-wrapper">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-body">
+              <div class="media">
+                <div class="avatar mr-75">
+                  <img [src]="userInfo.data.avatar" width="38" height="38" alt="Avatar" />
+                </div>
+                <div class="media-body">
+                  <h6 class="mb-25">{{ userInfo.data.username }}</h6>
+                  <!-- <p class="card-text">{{ data.data.postedAt }}</p> -->
+                </div>
+              </div>
+              <!-- Form -->
+              <!-- (ngSubmit)="onSubmit()" -->
+
+              <form action="javascript:;" class="mt-2" [formGroup]="formBlog" (ngSubmit)="onSubmit()" >
+                <div class="row">
+                  <div class="col-md-6 col-12">
+                    <div class="form-group mb-2">
+                      <label for="blog-edit-title">Title</label>
+                      <input
+                        type="text"
+                        id="blog-edit-title"
+                        name="blog-edit-title"
+                        class="form-control"
+                        formControlName="title"
+                        [(ngModel)]="dataCurrent.data.title"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-6 col-12">
+                    <div class="form-group mb-2">
+                      <label for="blog-edit-category">Category</label>
+
+                      <ng-select
+                        [items]="categotyList"
+                        bindLabel="category"
+                        placeholder="Select people"
+                        [closeOnSelect]="false"
+                        [searchable]="false"
+                        formControlName="categories"
+                        [multiple]="true"
+                        [(ngModel)]="selectCategoriesSelected"
+                      >
+                      <!-- [multiple]="true" -->
+                      </ng-select>
+                    </div>
+                  </div>
+
+                  <!-- <div class="col-md-6 col-12">
+                    <div class="form-group mb-2">
+                      <label for="blog-edit-slug">Slug</label>
+                      <input
+                        type="text"
+                        id="blog-edit-slug"
+                        class="form-control"
+                        value="the-best-features-coming-to-ios-and-web-design"
+                      />
+                    </div>
+                  </div> -->
+
+                  <!-- <div class="col-md-6 col-12">
+                    <div class="form-group mb-2">
+                      <label for="blog-edit-status">Status</label>
+                      <select
+                        class="form-control"
+                        [(ngModel)]="data.data.status"
+                        id="blog-edit-status"
+                        name="blog-edit-status"
+                      >
+                        <option value="Published">Published</option>
+                        <option value="Pending">Pending</option>
+                        <option value="Draft">Draft</option>
+                      </select>
+                    </div>
+                  </div> -->
+
+                  <div class="col-12">
+                    <div class="form-group mb-2">
+                      <label>Content</label>
+                      <quill-editor  name="quill-content" formControlName="content" [(ngModel)]="dataCurrent.data.content" ></quill-editor> 
+                          <!-- [(ngModel)]="data.data.blogText" -->
+                    </div>
+                  </div>
+
+
+                  <div class="col-12 mb-2">
+                    <div class="border rounded p-2">
+                      <h4 class="mb-1">Featured Image</h4>
+                      <div class="media flex-column flex-md-row">
+                        <img
+                          [src]="featuredImage"
+                          id="blog-feature-image"
+                          class="rounded mr-2 mb-1 mb-md-0"
+                          width="170"
+                          height="110"
+                          alt="Blog Featured Image"
+                          formControlName = "img"
+                        />
+                        <div class="media-body">
+                          <small class="text-muted">Required image resolution 800x400, image size 10mb.</small>
+                          <p class="my-50">
+                            <a href="javascript:void(0);" id="blog-image-text"
+                              >C:\fakepath\{{ fileName === undefined ? 'banner.jpg' : fileName }}</a
+                            >
+                          </p>
+                          <div class="d-inline-block">
+                            <div class="form-group mb-0">
+                              <div class="custom-file">
+                                <input
+                                  type="file"
+                                  class="custom-file-input"
+                                  id="blogCustomFile"
+                                  (change)="onImageUpload($event)"
+                                />
+                                <!-- (change)="uploadImage($event)" -->
+                                <label class="custom-file-label" for="blogCustomFile">Choose file</label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 mt-50">
+                    <button type="submit" class="btn btn-primary mr-1" value="Upload Image" rippleEffect>Đăng bài</button>
+                    <button type="reset" class="btn btn-outline-secondary" rippleEffect>Hủy</button>
+                  </div>
+                </div>
+              </form>
+              <!--/ Form -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/ Blog Edit -->
+  </div>
+</div>

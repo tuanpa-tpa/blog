@@ -1,0 +1,13 @@
+//  ===============================================================================================
+//  File Name: mixins.scss
+//  Description: Extended mixins file with new mixins features.
+//  ----------------------------------------------------------------------------------------------
+//  Item Name: Csign - Phần mềm ký số từ xa
+//  Author: hung-hust-97
+//  Author URL: https://github.com/hung-hust-97
+//  ================================================================================================
+
+@import 'mixins/_type'; //(NEW)
+
+// Components
+@import 'mixins/_navs';

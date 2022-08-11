@@ -1,0 +1,65 @@
+spring:
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+      enabled: 'true'
+      file-size-threshold: 2KB
+  http:
+    multipart:
+      enabled: false
+
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  datasource:
+    url: jdbc:mysql://localhost:3306/blogv2?createDatabaseIfNotExist=true&autoReconnect=true&userSSL=false&useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: tuanpa28
+  jpa:
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate:
+#        dialect: org.hibernate.dialect.MySQL5Dialect
+        show_sql: false
+        format_sql: false
+  mail:
+#    protocol: smtp.gmail.com
+#    port: 587
+    username: tuanpa.tpa@gmail.com
+#    password: nmiumslrjhdirksp
+#    properties:
+#      mail:
+#        smtp:
+#          auth: true
+#          starttls:
+#            enable: true
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
+jwt:
+  secret: tuanpa
+my:
+  secret:
+    password: ${random.value}
+server:
+  error:
+    include-message: always
+    include-binding-errors: always
+  blogServer: localhost:8080
+template:
+  email: classpath:/templates
+logging:
+  level:
+    root : INFO
+    dev : INFO
+    org:
+      springframework:
+        web: INFO
+        boot:
+          autoconfigure: INFO
+      hibernate : ERROR
+debug: false
